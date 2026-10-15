@@ -17,6 +17,7 @@
         --bd: #e5e7eb;
         --ac: #bf1a25;
         --chip: #f4f4f5;
+        --button2: #ce4257;
         color-scheme: light;
         box-sizing: border-box;
         padding-top: env(safe-area-inset-top, 0px);
@@ -31,6 +32,7 @@
           --bd: #2a2a2f;
           --ac: #bf1a25;
           --chip: #222227;
+          --button2: #ce4257;
           color-scheme: dark;
         }
       }
@@ -42,6 +44,7 @@
         --bd: #2a2a2f;
         --ac: #bf1a25;
         --chip: #222227;
+        --button2: #ce4257;
         color-scheme: dark;
       }
       html {
@@ -470,6 +473,12 @@
         <div class="grid gap-4 md:grid-cols-2 2xl:grid-cols-3" id="proj"></div>
       </section>
 
+      <!-- DOKUMEN -->
+      <section id="documents" class="mb-6">
+        <h2 class="text-xl font-bold mb-1 px-1">Dokumen / Makalah</h2>
+        <div class="grid gap-4 md:grid-cols-2 2xl:grid-cols-3" id="docs"></div>
+      </section>
+
       <!-- CONTACT -->
       <section id="contact" class="card p-6 md:p-8 mb-6">
         <h2 class="text-xl font-bold">Contact Me</h2>
@@ -554,6 +563,15 @@
         clock: st(
           '<circle cx="8" cy="8" r="6.3"/><path d="M8 4.5V8l2.3 1.5"/>',
         ),
+        pdf: st(
+          '<path d="M9.500 1.500H4a1.500 1.500 0 0 0-1.500 1.500v10A1.500 1.500 0 0 0 4 14.500h8a1.500 1.500 0 0 0 1.500-1.500V5.500l-4-4z"/><path d="M9.500 1.500v4h4M5.500 9h5M5.500 11.500h3"/>',
+        ),
+        eye: st(
+          '<path d="M1 8s2.500-4.500 7-4.500S15 8 15 8s-2.500 4.500-7 4.500S1 8 1 8z"/><circle cx="8" cy="8" r="2"/>',
+        ),
+        down: st(
+          '<path d="M8 2v8.500M4.500 7.500 8 11l3.500-3.500M2.500 13.500h11"/>',
+        ),
         ar: st('<path d="M3 8h10M9 4l4 4-4 4"/>'),
         play: '<path d="M4.500 2.500v11l9-5.500z"/>',
         pause: '<path d="M4 2h3v12H4zM9 2h3v12H9z"/>',
@@ -630,7 +648,8 @@
         [
           "Tools",
           [
-            ["portfolio", "Portofolio", "grid", 9, 0],
+            ["portfolio", "Portofolio", "grid", 3, 0],
+            ["documents", "Dokumen", "pdf", 0, 1],
             ["contact", "Contact", "mail", 0, 1],
           ],
         ],
@@ -705,8 +724,37 @@
       ];
       document.getElementById("proj").innerHTML = PR.map(
         ([t, d, u], i) =>
-          `<article class="card p-5 flex flex-col"><div class="h-32 rounded-xl mb-4 grid place-items-center text-white" style="background:linear-gradient(135deg,${["#2f7cff,#1d4fd8", "#0ea5e9,#2563eb", "#6366f1,#1d4fd8"][i]})">${ic("grid", 'ic" style="width:2.5rem;height:2.5rem')}</div><h3 class="font-semibold">${t}</h3><p class="text-sm mu mt-1 flex-1">${d}</p><a href="${u}" ${u === "#" ? "" : 'target="_blank" rel="noopener"'} class="ac text-sm font-semibold mt-4 inline-flex items-center gap-1.5">Lihat Demo Project ${ic("ext", 'ic" style="width:.9rem;height:.9rem')}</a></article>`,
+          `<article class="card p-5 flex flex-col"><div class="h-32 rounded-xl mb-4 grid place-items-center text-white" style="background:linear-gradient(135deg,${["#bf1a25,#8f111a", "#d92b37,#9e131d", "#bf1a25,#7a0e16"][i]})">${ic("grid", 'ic" style="width:2.5rem;height:2.5rem')}</div><h3 class="font-semibold">${t}</h3><p class="text-sm mu mt-1 flex-1">${d}</p><a href="${u}" ${u === "#" ? "" : 'target="_blank" rel="noopener"'} class="ac text-sm font-semibold mt-4 inline-flex items-center gap-1.5">Lihat Demo Project ${ic("ext", 'ic" style="width:.9rem;height:.9rem')}</a></article>`,
       ).join("");
+
+      /* ===== DOKUMEN / MAKALAH =====
+         Format: [judul, deskripsi, path PDF]
+         Simpan file PDF di folder asset/dokumen/ lalu isi path-nya.
+         Selama path masih "#", tombol tampil sebagai "PDF segera tersedia". */
+      const DOCS = [
+        [
+          "ANALISIS PENERAPAN SISTEM INFORMASI PADA PT MAXIMUS TEKNOLOGI INDONESIA",
+          "Sistem Portal Support & Ticketing Services berbasis web (https://support.maximus-teknologi.co.id/)",
+          "/asset/document/TugasPertemuanke4-AhmadYusuf.pdf",
+        ],
+        [
+          "Makalah 2 — Judul Makalah",
+          "Deskripsi singkat isi makalah ini.",
+          "#",
+        ],
+        [
+          "Dokumen 3 — Judul Dokumen",
+          "Deskripsi singkat isi dokumen ini.",
+          "#",
+        ],
+      ];
+      document.getElementById("docs").innerHTML = DOCS.map(([t, d, u]) => {
+        const off = u === "#";
+        const dis = off
+          ? ' aria-disabled="true" tabindex="-1" style="opacity:.45;pointer-events:none;'
+          : ' style="';
+        return `<article class="card p-5 flex flex-col"><div class="flex items-start gap-4"><span class="grid h-12 w-12 flex-none place-items-center rounded-xl text-white" style="background:var(--button2)">${ic("pdf", 'ic" style="width:1.6rem;height:1.6rem')}</span><div class="min-w-0 flex-1"><h3 class="font-semibold">${t}</h3><p class="text-sm mu mt-1">${d}</p></div></div><div class="flex flex-wrap gap-2 mt-5"><a href="${u}" ${off ? "" : 'target="_blank" rel="noopener"'} class="rounded-xl px-4 py-2 text-sm font-semibold text-white inline-flex items-center gap-2"${dis}background:var(--button2)">${ic("eye", 'ic" style="width:1.1rem;height:1.1rem')}Lihat</a><a href="${u}" ${off ? "" : "download"} class="rounded-xl border bd px-4 py-2 text-sm font-semibold ac inline-flex items-center gap-2"${dis}">${ic("down", 'ic" style="width:1.1rem;height:1.1rem')}Download</a></div>${off ? '<p class="text-xs mu mt-2">PDF belum diunggah</p>' : ""}</article>`;
+      }).join("");
 
       const SO = [
         [
