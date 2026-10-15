@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Yusuf – Portofolio</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <style>
+      :root {
+        --bg: #efefef;
+        --card: #fff;
+        --tx: #111;
+        --mu: #6b7280;
+        --bd: #e5e7eb;
+        --ac: #1d6ff2;
+        --chip: #f4f4f5;
+        color-scheme: light;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #0c0c0e;
+          --card: #17171a;
+          --tx: #f4f4f5;
+          --mu: #9ca3af;
+          --bd: #2a2a2f;
+          --ac: #4d8dff;
+          --chip: #222227;
+          color-scheme: dark;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #0c0c0e;
+        --card: #17171a;
+        --tx: #f4f4f5;
+        --mu: #9ca3af;
+        --bd: #2a2a2f;
+        --ac: #4d8dff;
+        --chip: #222227;
+        color-scheme: dark;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 16px;
+      }
+      body {
+        background: var(--bg);
+        color: var(--tx);
+        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--bd);
+        border-radius: 1rem;
+      }
+      .mu {
+        color: var(--mu);
+      }
+      .ac {
+        color: var(--ac);
+      }
+      .bd {
+        border-color: var(--bd);
+      }
+      aside {
+        width: 16rem;
+        transition: width 0.25s;
+      }
+      main {
+        margin-left: 16.75rem;
+        transition: margin 0.25s;
+      }
+      body.c aside {
+        width: 5rem;
+      }
+      body.c main {
+        margin-left: 5.75rem;
+      }
+      body.c .lbl,
+      body.c .bdg,
+      body.c .brand,
+      body.c .prof-t {
+        display: none;
+      }
+      .dot {
+        display: none;
+      }
+      body.c .dot {
+        display: block;
+      }
+      body.c .nav a,
+      body.c .prof {
+        justify-content: center;
+      }
+      body.c .grp {
+        text-align: center;
+      }
+      .nav a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.65rem 0.5rem;
+        border-radius: 0.75rem;
+        color: var(--mu);
+        position: relative;
+        font-weight: 500;
+      }
+      .nav a:hover {
+        background: var(--chip);
+      }
+      .nav a.on {
+        color: var(--tx);
+        font-weight: 700;
+      }
+      .nav a.on svg {
+        color: var(--tx);
+      }
+      .bdg {
+        margin-left: auto;
+        border: 1px solid var(--bd);
+        border-radius: 0.5rem;
+        padding: 0.1rem 0.5rem;
+        font-size: 0.85rem;
+      }
+      .dot {
+        position: absolute;
+        right: 0.9rem;
+        top: 50%;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 9999px;
+        background: var(--ac);
+        transform: translateY(-50%);
+      }
+      .ic {
+        width: 1.35rem;
+        height: 1.35rem;
+        flex: none;
+      }
+      .icedu {
+        width: 2.35rem;
+        height: 2.35rem;
+        flex: none;
+      }
+      main section {
+        display: none;
+      }
+      main section.show {
+        display: block;
+      }
+      @media (max-width: 767px) {
+        body:not(.o) aside {
+          width: 5rem;
+        }
+        main {
+          margin-left: 5.75rem !important;
+        }
+        body:not(.o) .lbl,
+        body:not(.o) .bdg,
+        body:not(.o) .brand,
+        body:not(.o) .prof-t {
+          display: none;
+        }
+        body:not(.o) .dot {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen">
+    <aside
+      class="card fixed left-2 top-2 bottom-2 z-20 flex flex-col overflow-hidden"
+      style="top: calc(0.5rem + env(safe-area-inset-top, 0px))"
+    >
+      <div class="flex items-center justify-between px-4 py-5 border-b bd">
+        <div class="flex items-center gap-2 min-w-0">
+          <button
+            id="logo"
+            aria-label="Buka sidebar"
+            class="grid h-11 w-11 flex-none place-items-center rounded-xl text-white font-bold cursor-pointer"
+          >
+            <img src="asset/Logo Mawar.webp" alt="" />
+          </button>
+          <span class="brand text-xl font-bold ac truncate"
+            ><img src="asset/AHMADYUSUF.webp" alt="" class="w-[80px]"
+          /></span>
+        </div>
+        <button
+          id="tg"
+          class="brand grid h-9 w-9 place-items-center rounded-lg border bd"
+          style="background: var(--chip)"
+          aria-label="Collapse sidebar"
+        >
+          <i data-i="dl" class="ic" style="width: 1rem; height: 1rem"></i>
+        </button>
+      </div>
+
+      <div class="px-3 py-4 border-b bd">
+        <div class="grp text-sm mu mb-2 px-1">Profile</div>
+        <div class="prof flex items-center gap-2 rounded-xl border bd p-2">
+          <div
+            class="grid h-9 w-9 flex-none place-items-center rounded-lg text-white font-bold"
+          >
+            <img src="asset/Profil.webp" alt="" />
+          </div>
+          <div class="prof-t min-w-0 flex-1 leading-tight">
+            <div class="font-semibold truncate">Yusuf</div>
+            <div class="text-xs mu truncate">Technical Engineer</div>
+          </div>
+          <i
+            data-i="cd"
+            class="prof-t ic mu"
+            style="width: 1rem; height: 1rem"
+          ></i>
+        </div>
+      </div>
+
+      <nav class="nav flex-1 overflow-y-auto px-3 py-3" id="nav"></nav>
+
+      <div class="border-t bd p-3">
+        <button
+          id="open"
+          class="md:hidden w-full rounded-lg border bd py-2 text-sm"
+        >
+          ☰
+        </button>
+        <div class="lbl text-xs mu px-1 hidden md:block">© 2026 Yusuf</div>
+      </div>
+    </aside>
+
+    <main class="p-3 md:p-8 min-w-0 w-auto">
+      <!-- HERO / ABOUT -->
+      <section id="about" class="card p-6 md:p-8 mb-6">
+        <div class="flex items-center justify-between mb-6 text-sm mu">
+          <span class="inline-flex items-center gap-2"
+            ><i data-i="clock" class="ic" style="width: 1rem; height: 1rem"></i>
+            Waktu Lokal</span
+          >
+          <span id="clk" class="font-mono">--:--:--</span>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-6 items-start">
+          <div
+            class="grid h-28 w-28 flex-none place-items-center rounded-2xl text-4xl font-bold text-white"
+            style="background: linear-gradient(135deg, #2f7cff, #1d4fd8)"
+          >
+            AY
+          </div>
+          <div>
+            <h1 class="text-3xl font-bold">Hello! Welcome to my portfolio.</h1>
+            <p class="ac font-semibold mt-1">Yusuf · Technical Engineer</p>
+            <p class="mu mt-4 leading-relaxed">
+              My name is Yusuf, and I am an aspiring Technical Engineer with a
+              strong passion for web development. I may not be an expert yet,
+              but I am highly motivated to improve my skills every single day.
+            </p>
+            <p class="mu mt-3 leading-relaxed">
+              I am currently working at
+              <a
+                class="ac underline"
+                href="https://maximus.co.id/"
+                target="_blank"
+                rel="noopener"
+                >PT. Maximus Teknologi Indonesia</a
+              >
+              as a Technical Support and Sales Support Officer. In my personal
+              lab I build simple web apps from scratch, turning theory into real
+              code and learning from my mistakes along the way.
+            </p>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 mt-5 rounded-xl px-5 py-2.5 text-white font-semibold"
+              style="background: var(--ac)"
+              >Let's Talk
+              <i data-i="ar" class="ic" style="width: 1rem; height: 1rem"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="card p-6 md:p-8 mb-6">
+        <h2 class="text-xl font-bold mb-5">Educational Background</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border bd p-4">
+            <img src="asset/ICBI_Logo.png" alt="" class="icedu" />
+            <h3 class="font-semibold mt-3">Institut Citra Buana Indonesia</h3>
+            <p class="text-sm mu">2026 – Present</p>
+            <p class="mt-1">S1 Sistem Informasi</p>
+            <a
+              class="ac text-sm underline"
+              href="https://cbi.ac.id/"
+              target="_blank"
+              rel="noopener"
+              >www.cbi.ac.id</a
+            >
+          </div>
+          <div class="rounded-xl border bd p-4">
+            <img
+              src="asset/SMK_Bela_Nusantara_Cianjur_Logo.png"
+              alt=""
+              class="icedu"
+            />
+            <h3 class="font-semibold mt-3">SMK Bela Nusantara Cianjur</h3>
+            <p class="text-sm mu">2009 – 2012</p>
+            <p class="mt-1">Teknik Komputer &amp; Jaringan</p>
+            <a
+              class="ac text-sm underline"
+              href="https://www.smkbn.sch.id/"
+              target="_blank"
+              rel="noopener"
+              >www.smkbn.sch.id</a
+            >
+          </div>
+        </div>
+        <h2 class="text-xl font-bold mt-8 mb-4">Professional Qualifications</h2>
+        <div class="rounded-xl border bd p-4 flex items-center gap-4">
+          <img src="asset/MT_Symbol_Line_Black.svg" alt="" class="icedu" />
+          <div>
+            <h3 class="font-semibold">MikroTik Certified Network Associate</h3>
+            <p class="text-sm mu">MTCNA · 2026 · MikroTik</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="card p-6 md:p-8 mb-6">
+        <h2 class="text-xl font-bold mb-6">Professional Experience</h2>
+        <ol class="relative border-l bd ml-2 space-y-7" id="exp"></ol>
+      </section>
+
+      <!-- PORTFOLIO -->
+      <section id="portfolio" class="mb-6">
+        <h2 class="text-xl font-bold mb-4 px-1">My App Project</h2>
+        <div class="grid gap-4 md:grid-cols-2 2xl:grid-cols-3" id="proj"></div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="card p-6 md:p-8 mb-6">
+        <h2 class="text-xl font-bold">Contact Me</h2>
+        <p class="mu mt-1 mb-5">
+          Let's connect! Please leave a message using the form below.
+        </p>
+        <div class="space-y-3" id="cf">
+          <input
+            id="n"
+            placeholder="Full Name"
+            class="w-full rounded-xl border bd bg-transparent px-4 py-2.5 outline-none focus:ring-2"
+            style="--tw-ring-color: var(--ac)"
+          />
+          <input
+            id="e"
+            type="email"
+            placeholder="Email"
+            class="w-full rounded-xl border bd bg-transparent px-4 py-2.5 outline-none focus:ring-2"
+            style="--tw-ring-color: var(--ac)"
+          />
+          <textarea
+            id="m"
+            rows="4"
+            placeholder="Message"
+            class="w-full rounded-xl border bd bg-transparent px-4 py-2.5 outline-none focus:ring-2"
+            style="--tw-ring-color: var(--ac)"
+          ></textarea>
+          <button
+            id="send"
+            class="rounded-xl px-5 py-2.5 text-white font-semibold"
+            style="background: var(--ac)"
+          >
+            Send a message
+          </button>
+          <p id="ok" class="text-sm ac hidden">
+            Terima kasih! Pesan Anda sudah dicatat (demo – hubungkan ke
+            backend/email untuk mengirim sungguhan).
+          </p>
+        </div>
+        <p class="mu mt-7 mb-3 text-sm">
+          Or find me on the following social media platforms:
+        </p>
+        <div
+          class="grid gap-3 grid-cols-[minmax(0,1fr)] sm:grid-cols-[repeat(2,minmax(0,1fr))] xl:grid-cols-[repeat(4,minmax(0,1fr))]"
+          id="soc"
+        ></div>
+      </section>
+      <footer class="text-center text-sm mu py-4">
+        © 2026 Yusuf. All rights reserved.
+      </footer>
+    </main>
+
+    <script>
+      const P = {
+        dl: '<path d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/><path d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>',
+        dr: '<path d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/><path d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>',
+        cd: '<path d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>',
+        home: '<path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>',
+        S: (d) => d,
+      };
+      const st = (d) =>
+        `<g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">${d}</g>`;
+      Object.assign(P, {
+        cap: st(
+          '<path d="M8 2 1 5.5 8 9l7-3.5L8 2z"/><path d="M4 7.3V11c0 1 1.8 2 4 2s4-1 4-2V7.3"/><path d="M15 5.5V10"/>',
+        ),
+        award: st(
+          '<circle cx="8" cy="6" r="4"/><path d="m5.5 9.3-1 5.2L8 12.8l3.5 1.7-1-5.2"/>',
+        ),
+        brief: st(
+          '<rect x="1.5" y="4.5" width="13" height="9" rx="1.5"/><path d="M5.5 4.5v-1.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1.5M1.5 8.5h13"/>',
+        ),
+        grid: st(
+          '<rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/>',
+        ),
+        mail: st(
+          '<rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="m1.8 4 6.2 4.8L14.2 4"/>',
+        ),
+        user: st(
+          '<circle cx="8" cy="5" r="2.8"/><path d="M2.5 14c.4-2.8 2.8-4.5 5.5-4.5s5.1 1.7 5.5 4.5"/>',
+        ),
+        clock: st(
+          '<circle cx="8" cy="8" r="6.3"/><path d="M8 4.5V8l2.3 1.5"/>',
+        ),
+        ar: st('<path d="M3 8h10M9 4l4 4-4 4"/>'),
+        ext: st(
+          '<path d="M9 2.5h4.5V7M13.5 2.5 7 9M11.5 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/>',
+        ),
+        gh: st(
+          '<path d="M6 13.5c-3 1-3-1.5-4.5-2M10 14v-2.2c0-.8.1-1.3-.5-1.8 2-.2 4-1 4-4.2A3.300 3.300 0 0 0 13 3.500 3 3 0 0 0 12.900 1.200S12 .9 10 2.200a7 7 0 0 0-4 0C4 .9 3.100 1.200 3.100 1.200A3 3 0 0 0 3 3.500 3.300 3.300 0 0 0 2 5.800c0 3.200 2 4 4 4.200-.5.500-.5 1-.5 1.800V14"/>',
+        ),
+        li: st(
+          '<rect x="1.8" y="1.8" width="12.400" height="12.400" rx="2"/><path d="M5 7v4M5 4.800v.1M8 11V7m0 2c0-1.200.8-2 2-2s1.500.8 1.500 2v2"/>',
+        ),
+        ig: st(
+          '<rect x="2" y="2" width="12" height="12" rx="3.500"/><circle cx="8" cy="8" r="2.700"/><circle cx="11.600" cy="4.400" r=".4"/>',
+        ),
+        yt: st(
+          '<rect x="1.500" y="3.500" width="13" height="9" rx="2.500"/><path d="M6.500 6v4l3.500-2z"/>',
+        ),
+      });
+      const ic = (n, c = "ic") =>
+        `<svg class="${c}" viewBox="0 0 16 16" fill="currentColor">${P[n]}</svg>`;
+      function paint(r = document) {
+        r.querySelectorAll("i[data-i]").forEach((e) => {
+          const s = document.createElement("span");
+          s.innerHTML = ic(e.dataset.i, e.className);
+          const v = s.firstChild;
+          v.setAttribute("style", e.getAttribute("style") || "");
+          e.replaceWith(v);
+        });
+      }
+
+      const NAV = [
+        [
+          "General",
+          [
+            ["about", "Dashboard", "home", 0, 0],
+            ["education", "Education", "cap", 0, 1],
+            ["experience", "Experience", "brief", 5, 1],
+          ],
+        ],
+        [
+          "Tools",
+          [
+            ["portfolio", "Portfolio App", "grid", 9, 0],
+            ["contact", "Contact", "mail", 0, 1],
+          ],
+        ],
+      ];
+      document.getElementById("nav").innerHTML = NAV.map(
+        ([g, items], i) =>
+          `${i ? '<div class="h-2"></div>' : ""}` +
+          items
+            .map(
+              ([id, l, i, b, d]) =>
+                `<a href="#${id}" data-id="${id}">${ic(i)}<span class="lbl">${l}</span>${b ? `<span class="bdg">${b}</span>` : ""}${d || b ? '<span class="dot"></span>' : ""}</a>`,
+            )
+            .join(""),
+      ).join("");
+
+      const EXP = [
+        [
+          "Technical Support | Sales Support",
+          "PT Maximus Teknologi Indonesia",
+          "2024 – Present",
+          [
+            "2026 | Preparation and submission of the SKK Migas Server Renewal and Maintenance Tender Proposal.",
+            "2026 | Preparation and submission of the SKK Migas Sistem Backup Renewal and Maintenance Tender Proposal.",
+            "2025 | Technical Support Project Implementation: Kemenham.",
+            "2025 | Preparation and submission of the SKK Migas Server Renewal Tender Proposal.",
+            "2024 | Preparation and submission of the SKK Migas Server Renewal Tender Proposal.",
+          ],
+        ],
+        [
+          "Village Officials",
+          "PEMDES Sukamaju, Cibeber, Cianjur",
+          "2020 – 2024",
+        ],
+        ["Cooking Crew", "PT. Griya Miesejati", "2017 – 2020"],
+        ["Painting Steel", "PT. Astra Honda Motor", "2013 – 2015"],
+        [
+          "Quality Control (Incoming)",
+          "PT. Toshiba Consumer Product Indonesia",
+          "2012 – 2013",
+        ],
+      ];
+      document.getElementById("exp").innerHTML = EXP.map(
+        ([t, c, y, l]) =>
+          `<li class="ml-6"><span class="absolute -left-[7px] mt-1.5 h-3.5 w-3.5 rounded-full border-2" style="background:var(--card);border-color:var(--ac)"></span><h3 class="font-semibold">${t}</h3><p class="text-sm mu">${c} · ${y}</p>${
+            l
+              ? `<ul class="mt-3 space-y-2 text-sm mu list-disc pl-5">${l
+                  .map((x) => {
+                    const [a, b] = x.split(" | ");
+                    return `<li><b style="color:var(--tx)">${a}</b> | ${b}</li>`;
+                  })
+                  .join("")}</ul>`
+              : ""
+          }</li>`,
+      ).join("");
+
+      const PR = [
+        [
+          "1. Dashboard Network Video Recorder (NVR)",
+          "A custom NVR dashboard for real-time monitoring of multi-channel security cameras.",
+          "http://nvr-system.ahmadyusuf.org/",
+        ],
+        [
+          "2. Website Kelas Sistem Informasi",
+          "Pusat informasi, komunikasi, dan dokumentasi mahasiswa Sistem Informasi: jadwal, kegiatan kelas, materi, dan dokumentasi.",
+          "https://siicbi2026.ahmadyusuf.org/",
+        ],
+        [
+          "3. Visitor Management System",
+          "Aplikasi web untuk mengelola dan memonitor kunjungan tamu: registrasi, verifikasi identitas, pencatatan, hingga monitoring.",
+          "#",
+        ],
+      ];
+      document.getElementById("proj").innerHTML = PR.map(
+        ([t, d, u], i) =>
+          `<article class="card p-5 flex flex-col"><div class="h-32 rounded-xl mb-4 grid place-items-center text-white" style="background:linear-gradient(135deg,${["#2f7cff,#1d4fd8", "#0ea5e9,#2563eb", "#6366f1,#1d4fd8"][i]})">${ic("grid", 'ic" style="width:2.5rem;height:2.5rem')}</div><h3 class="font-semibold">${t}</h3><p class="text-sm mu mt-1 flex-1">${d}</p><a href="${u}" ${u === "#" ? "" : 'target="_blank" rel="noopener"'} class="ac text-sm font-semibold mt-4 inline-flex items-center gap-1.5">Lihat Demo Project ${ic("ext", 'ic" style="width:.9rem;height:.9rem')}</a></article>`,
+      ).join("");
+
+      const SO = [
+        [
+          "li",
+          "LinkedIn",
+          "linkedin.com/in/ahmad-yusuf-6816711ab",
+          "https://www.linkedin.com/in/ahmad-yusuf-6816711ab/",
+        ],
+        [
+          "gh",
+          "GitHub",
+          "github.com/ahmadyusuf347",
+          "https://github.com/ahmadyusuf347",
+        ],
+        [
+          "ig",
+          "Instagram",
+          "@ahmdysf_8",
+          "https://www.instagram.com/ahmdysf_8",
+        ],
+        ["yt", "YouTube", "@yusuf_tips", "https://www.youtube.com/@yusuf_tips"],
+      ];
+      document.getElementById("soc").innerHTML = SO.map(
+        ([i, n, h, u]) =>
+          `<a href="${u}" target="_blank" rel="noopener" class="flex min-w-0 items-center gap-3 rounded-xl border bd p-3 hover:opacity-80"><span class="ac flex-none">${ic(i)}</span><span class="min-w-0 flex-1"><span class="block font-semibold text-sm">${n}</span><span class="block text-xs mu truncate">${h}</span></span></a>`,
+      ).join("");
+
+      paint();
+      const b = document.body,
+        tg = document.getElementById("tg");
+      const mob = () => matchMedia("(max-width:767px)").matches;
+      tg.onclick = () => {
+        if (mob()) b.classList.remove("o");
+        else b.classList.add("c");
+      };
+      document.getElementById("logo").onclick = () => {
+        if (mob()) b.classList.toggle("o");
+        else b.classList.remove("c");
+      };
+      document.getElementById("open").onclick = () => b.classList.toggle("o");
+      document
+        .querySelectorAll("#nav a")
+        .forEach((a) =>
+          a.addEventListener("click", () => b.classList.remove("o")),
+        );
+      const links = [...document.querySelectorAll("#nav a")];
+      const secs = [...document.querySelectorAll("main section")];
+      function show() {
+        let id = location.hash.slice(1);
+        if (!secs.some((s) => s.id === id)) id = "about";
+        secs.forEach((s) => s.classList.toggle("show", s.id === id));
+        links.forEach((l) => l.classList.toggle("on", l.dataset.id === id));
+        window.scrollTo(0, 0);
+      }
+      addEventListener("hashchange", show);
+      show();
+      const clk = document.getElementById("clk");
+      setInterval(
+        () =>
+          (clk.textContent = new Date().toLocaleTimeString("id-ID", {
+            hour12: false,
+          })),
+        1000,
+      );
+      document.getElementById("send").onclick = () =>
+        document.getElementById("ok").classList.remove("hidden");
+    </script>
+  </body>
+</html>
