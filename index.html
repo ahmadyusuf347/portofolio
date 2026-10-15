@@ -138,13 +138,73 @@
         transform: translateY(-50%);
       }
       .ic {
-        width: 1.35rem;
-        height: 1.35rem;
+        width: 1.5rem;
+        height: 1.5rem;
         flex: none;
       }
       .icedu {
         width: 2.35rem;
         height: 2.35rem;
+        flex: none;
+      }
+      .mbtn {
+        display: grid;
+        place-items: center;
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 9999px;
+        border: 1px solid var(--bd);
+        color: var(--tx);
+        cursor: pointer;
+      }
+      .mbtn:hover {
+        background: var(--chip);
+      }
+      .mbtn.main {
+        width: 3rem;
+        height: 3rem;
+        background: var(--ac);
+        border-color: var(--ac);
+        color: #fff;
+      }
+      .mbtn.main:hover {
+        opacity: 0.88;
+        background: var(--ac);
+      }
+      .mbtn[aria-pressed="true"] {
+        color: var(--ac);
+        border-color: var(--ac);
+      }
+      .mbtn:focus-visible,
+      .trk:focus-visible {
+        outline: 2px solid var(--ac);
+        outline-offset: 2px;
+      }
+      .trk {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 0.55rem 0.75rem;
+        border-radius: 0.75rem;
+        text-align: left;
+        cursor: pointer;
+      }
+      .trk:hover {
+        background: var(--chip);
+      }
+      .trk.on {
+        background: var(--chip);
+      }
+      .trk.on .tn {
+        font-weight: 700;
+        color: var(--ac);
+      }
+      .trk .no {
+        width: 1.5rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: var(--mu);
         flex: none;
       }
       main section {
@@ -242,18 +302,11 @@
           <span id="clk" class="font-mono">--:--:--</span>
         </div>
         <div class="flex flex-col sm:flex-row gap-6 items-start">
-          <div
-            class="grid h-28 w-28 flex-none place-items-center rounded-full text-4xl font-bold text-white border"
-            style="background: linear-gradient(135deg, #2f7cff, #1d4fd8)"
-          >
-            <img src="asset/Profil_Yusuf.png" class="rounded-full" alt="" />
-          </div>
           <div>
             <h1 class="text-3xl font-bold">Hello! Welcome.</h1>
             <p class="mu mt-4 leading-relaxed text-justify">
-              My name is Yusuf, and I am an aspiring Technical Engineer with a
-              strong passion for web development. I may not be an expert yet,
-              but I am highly motivated to improve my skills every single day.
+              Tech & Open Source Explorer | Selalu penasaran dengan cara kerja
+              teknologi di balik layar.
             </p>
             <p class="mu mt-3 leading-relaxed text-justify">
               I am currently working at
@@ -276,6 +329,87 @@
               <i data-i="ar" class="ic" style="width: 1rem; height: 1rem"></i
             ></a>
           </div>
+        </div>
+
+        <!-- MUSIK -->
+        <div class="border-t bd mt-8 pt-6" id="mp">
+          <h2 class="text-xl font-bold">Music</h2>
+          <p class="text-sm mu mt-1 mb-4">
+            Lagu-lagu yang menemani saya belajar.
+          </p>
+          <div
+            id="mh"
+            class="hidden mb-4 rounded-xl border bd px-4 py-2.5 text-sm"
+            style="background: var(--chip)"
+            role="status"
+          ></div>
+          <div class="rounded-xl border bd p-4">
+            <div class="flex items-center gap-3">
+              <span
+                class="grid h-12 w-12 flex-none place-items-center rounded-xl text-white"
+                style="background: linear-gradient(135deg, #2f7cff, #1d4fd8)"
+                id="mi"
+              ></span>
+              <div class="min-w-0 flex-1">
+                <div id="mt" class="font-semibold truncate">-</div>
+                <div id="ma" class="text-sm mu truncate">-</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-4 text-xs mu">
+              <span id="mc" class="font-mono w-10 text-right">0:00</span>
+              <input
+                id="ms"
+                type="range"
+                min="0"
+                max="1000"
+                value="0"
+                aria-label="Posisi lagu"
+                class="flex-1"
+                style="accent-color: var(--ac)"
+              />
+              <span id="md" class="font-mono w-10">0:00</span>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 mt-3">
+              <div class="flex items-center gap-2">
+                <button
+                  id="mshuf"
+                  class="mbtn"
+                  aria-label="Acak"
+                  aria-pressed="false"
+                ></button>
+                <button
+                  id="mprev"
+                  class="mbtn"
+                  aria-label="Lagu sebelumnya"
+                ></button>
+                <button
+                  id="mplay"
+                  class="mbtn main"
+                  aria-label="Putar"
+                ></button>
+                <button
+                  id="mnext"
+                  class="mbtn"
+                  aria-label="Lagu berikutnya"
+                ></button>
+              </div>
+              <div class="flex items-center gap-2">
+                <button id="mmute" class="mbtn" aria-label="Bisukan"></button>
+                <input
+                  id="mv"
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="70"
+                  aria-label="Volume"
+                  class="w-24"
+                  style="accent-color: var(--ac)"
+                />
+              </div>
+            </div>
+            <p id="mst" class="text-xs mu mt-3 hidden"></p>
+          </div>
+          <ol class="mt-3 space-y-1" id="mlist"></ol>
         </div>
       </section>
 
@@ -421,6 +555,41 @@
           '<circle cx="8" cy="8" r="6.3"/><path d="M8 4.5V8l2.3 1.5"/>',
         ),
         ar: st('<path d="M3 8h10M9 4l4 4-4 4"/>'),
+        play: '<path d="M4.500 2.500v11l9-5.500z"/>',
+        pause: '<path d="M4 2h3v12H4zM9 2h3v12H9z"/>',
+        next: '<path d="M3 3v10l7.500-5zM11.500 3h2v10h-2z"/>',
+        prev: '<path d="M13 3v10L5.500 8zM2.500 3h2v10h-2z"/>',
+        vol: st(
+          '<path d="M2 6v4h2.500L8 13V3L4.500 6H2Z"/><path d="M10.500 5.500a3.500 3.500 0 0 1 0 5M12 3.500a6 6 0 0 1 0 9"/>',
+        ),
+        mute: st(
+          '<path d="M2 6v4h2.500L8 13V3L4.500 6H2Z"/><path d="m10.500 6 4 4M14.500 6l-4 4"/>',
+        ),
+        shuf: st(
+          '<path d="M1.500 4.500h2c3 0 4 7 7 7h4M1.500 11.500h2c1 0 1.800-.8 2.500-1.800M8.500 6.300C9 5.500 9.700 4.500 10.500 4.500h4M12.500 2.500l2 2-2 2M12.500 9.500l2 2-2 2"/>',
+        ),
+        note: st(
+          '<path d="M6 12V3l7-1.500V10.500"/><circle cx="4.500" cy="12" r="1.500"/><circle cx="11.500" cy="10.500" r="1.500"/>',
+        ),
+        mail: st(
+          '<rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="m1.8 4 6.2 4.8L14.2 4"/>',
+        ),
+        user: st(
+          '<circle cx="8" cy="5" r="2.8"/><path d="M2.5 14c.4-2.8 2.8-4.5 5.5-4.5s5.1 1.7 5.5 4.5"/>',
+        ),
+        clock: st(
+          '<circle cx="8" cy="8" r="6.3"/><path d="M8 4.5V8l2.3 1.5"/>',
+        ),
+        ar: st('<path d="M3 8h10M9 4l4 4-4 4"/>'),
+        file: st(
+          '<path d="M9.500 1.500H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-8l-3.500-4Z"/><path d="M9.500 1.500v4H13M5.500 9h5M5.500 11.500h3"/>',
+        ),
+        down: st(
+          '<path d="M8 2v8.500M4.500 7.500 8 11l3.500-3.500M3 13.500h10"/>',
+        ),
+        eye: st(
+          '<path d="M1 8s2.500-4.500 7-4.500S15 8 15 8s-2.500 4.500-7 4.500S1 8 1 8Z"/><circle cx="8" cy="8" r="2"/>',
+        ),
         ext: st(
           '<path d="M9 2.5h4.5V7M13.5 2.5 7 9M11.5 9.5v3a1 1 0 0 1-1 1h-7a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1h3"/>',
         ),
@@ -564,6 +733,168 @@
         ([i, n, h, u]) =>
           `<a href="${u}" target="_blank" rel="noopener" class="flex min-w-0 items-center gap-3 rounded-xl border bd p-3 hover:opacity-80"><span class="ac flex-none">${ic(i)}</span><span class="min-w-0 flex-1"><span class="block font-semibold text-sm">${n}</span><span class="block text-xs mu truncate">${h}</span></span></a>`,
       ).join("");
+
+      /* ===== MUSIK =====
+         Edit daftar ini. Format: [judul, artis, path file mp3]
+         Simpan file mp3 di folder asset/musik/ */
+      const MUSIC = [
+        [
+          "Up and Down",
+          "The S.I.G.I.T",
+          "asset/The_S.I.G.I.T._-_Up_and_Down.mp3",
+        ],
+        ["Dtourn", "The S.I.G.I.T", "asset/The_S.I.G.I.T_-_D_tourn.mp3"],
+        ["Conundrum", "The S.I.G.I.T", "asset/Conundrum.mp3"],
+      ];
+      const AUTOPLAY = true;
+      const $ = (id) => document.getElementById(id);
+      const esc = (t) =>
+        String(t).replace(
+          /[&<>"]/g,
+          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c],
+        );
+      const au = new Audio();
+      au.preload = "metadata";
+      au.volume = 0.7;
+      let cur = 0,
+        shuf = false,
+        pending = false,
+        seeking = false;
+      const ico = (n, z = "1.1rem") =>
+        ic(n, 'ic" style="width:' + z + ";height:" + z);
+      const fmt = (t) =>
+        isFinite(t)
+          ? Math.floor(t / 60) +
+            ":" +
+            String(Math.floor(t % 60)).padStart(2, "0")
+          : "0:00";
+      const say = (m) => {
+        $("mst").textContent = m || "";
+        $("mst").classList.toggle("hidden", !m);
+      };
+      function drawList() {
+        $("mlist").innerHTML = MUSIC.map(
+          ([t, a], i) =>
+            `<li><button type="button" class="trk${i === cur ? " on" : ""}" data-i="${i}"><span class="no">${i === cur && !au.paused ? ico("play", "0.8rem") : i + 1}</span><span class="min-w-0 flex-1"><span class="tn block truncate">${esc(t)}</span><span class="block text-xs mu truncate">${esc(a)}</span></span></button></li>`,
+        ).join("");
+      }
+      function sync() {
+        const m = MUSIC[cur];
+        if (!m) return;
+        $("mt").textContent = m[0];
+        $("ma").textContent = m[1];
+        $("mplay").innerHTML = ico(au.paused ? "play" : "pause", "1.3rem");
+        $("mplay").setAttribute("aria-label", au.paused ? "Putar" : "Jeda");
+        drawList();
+      }
+      function load(i, play) {
+        cur = (i + MUSIC.length) % MUSIC.length;
+        au.src = MUSIC[cur][2];
+        say("");
+        $("ms").value = 0;
+        $("mc").textContent = "0:00";
+        $("md").textContent = "0:00";
+        sync();
+        if (play) go();
+      }
+      function go() {
+        const r = au.play();
+        if (r && r.catch)
+          r.catch((e) => {
+            if (e.name === "NotAllowedError") {
+              pending = true;
+              $("mh").classList.remove("hidden");
+            }
+          });
+      }
+      function nextTrack() {
+        if (MUSIC.length < 2) return load(cur, true);
+        if (shuf) {
+          let n;
+          do n = Math.floor(Math.random() * MUSIC.length);
+          while (n === cur);
+          load(n, true);
+        } else load(cur + 1, true);
+      }
+      if (MUSIC.length) {
+        $("mi").innerHTML = ico("note", "1.5rem");
+        $("mshuf").innerHTML = ico("shuf");
+        $("mprev").innerHTML = ico("prev");
+        $("mnext").innerHTML = ico("next");
+        $("mmute").innerHTML = ico("vol");
+        $("mplay").onclick = () => {
+          pending = false;
+          $("mh").classList.add("hidden");
+          au.paused ? go() : au.pause();
+        };
+        $("mnext").onclick = nextTrack;
+        $("mprev").onclick = () =>
+          au.currentTime > 3 ? (au.currentTime = 0) : load(cur - 1, true);
+        $("mshuf").onclick = () => {
+          shuf = !shuf;
+          $("mshuf").setAttribute("aria-pressed", shuf);
+        };
+        $("mmute").onclick = () => {
+          au.muted = !au.muted;
+          $("mmute").innerHTML = ico(au.muted ? "mute" : "vol");
+        };
+        $("mv").oninput = (e) => {
+          au.volume = e.target.value / 100;
+          au.muted = false;
+          $("mmute").innerHTML = ico("vol");
+        };
+        $("mlist").onclick = (e) => {
+          const t = e.target.closest(".trk");
+          if (!t) return;
+          const i = +t.dataset.i;
+          if (i === cur && au.src) au.paused ? go() : au.pause();
+          else load(i, true);
+        };
+        $("ms").oninput = () => {
+          seeking = true;
+          $("mc").textContent = fmt((au.duration * $("ms").value) / 1000);
+        };
+        $("ms").onchange = () => {
+          if (isFinite(au.duration))
+            au.currentTime = (au.duration * $("ms").value) / 1000;
+          seeking = false;
+        };
+        au.ontimeupdate = () => {
+          if (seeking || !isFinite(au.duration)) return;
+          $("ms").value = (au.currentTime / au.duration) * 1000;
+          $("mc").textContent = fmt(au.currentTime);
+        };
+        au.onloadedmetadata = () => ($("md").textContent = fmt(au.duration));
+        au.onplay = () => {
+          pending = false;
+          $("mh").classList.add("hidden");
+          sync();
+        };
+        au.onpause = sync;
+        au.onended = nextTrack;
+        au.onerror = () =>
+          say(
+            "File tidak ditemukan: " +
+              MUSIC[cur][2] +
+              ". Cek nama dan lokasi file mp3.",
+          );
+        // Browser memblokir suara otomatis: mulai pada interaksi pertama.
+        ["pointerdown", "keydown", "touchstart"].forEach((ev) =>
+          addEventListener(
+            ev,
+            (e) => {
+              if (!pending) return;
+              pending = false;
+              $("mh").classList.add("hidden");
+              if (!e.target.closest || !e.target.closest("#mplay")) go();
+            },
+            { capture: true },
+          ),
+        );
+        load(0, AUTOPLAY);
+      } else {
+        $("mp").classList.add("hidden");
+      }
 
       paint();
       const b = document.body,
